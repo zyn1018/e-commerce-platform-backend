@@ -139,16 +139,29 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.yinanmall.pojo.User">
-    update mmall_user
-    set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
-      question = #{question,jdbcType=VARCHAR},
-      answer = #{answer,jdbcType=VARCHAR},
-      role = #{role,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = now()
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+      update mmall_user
+      set username = #{username,jdbcType=VARCHAR},
+        password = #{password,jdbcType=VARCHAR},
+        email = #{email,jdbcType=VARCHAR},
+        phone = #{phone,jdbcType=VARCHAR},
+        question = #{question,jdbcType=VARCHAR},
+        answer = #{answer,jdbcType=VARCHAR},
+        role = #{role,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        update_time = now()
+      where id = #{id,jdbcType=INTEGER}
+    </update>
+    <select id="checkUsername" resultType="int" parameterType="String">
+        SELECT count(1) from mmall_user
+        WHERE username = #{username}
+    </select>
+
+    <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
+      //要什么查什么
+        SELECT
+      <include refid="Base_Column_List" />
+        FROM mmall_user
+        WHERE username = #{username}
+        and password = #{password}
+    </select>
 </mapper>
