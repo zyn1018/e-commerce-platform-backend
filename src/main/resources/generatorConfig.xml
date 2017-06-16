@@ -99,6 +99,6 @@
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 
 
-        <!-- geelynote mybatis插件的搭建 -->
+        <!-- mybatis插件的搭建 -->
     </context>
 </generatorConfiguration>

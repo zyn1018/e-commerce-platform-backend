@@ -164,4 +164,21 @@
         WHERE username = #{username}
         and password = #{password}
     </select>
+
+    <select id="checkEmail" resultType="int" parameterType="String">
+        SELECT count(1) from mmall_user
+        WHERE email = #{email}
+    </select>
+    
+    <select id="selectQuestionByUsername" resultType="String" parameterType="String">
+        SELECT question from mmall_user
+        WHERE username = #{username}
+    </select>
+    
+    <select id="checkAnswer" resultType="int" parameterMap="map">
+        SELECT count(1) FROM mmall_user
+        WHERE username = #{username}
+        and question = #{question}
+        and answer = #{answer}
+    </select>
 </mapper>
