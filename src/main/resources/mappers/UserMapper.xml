@@ -157,9 +157,8 @@
     </select>
 
     <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
-      //要什么查什么
         SELECT
-      <include refid="Base_Column_List" />
+        <include refid="Base_Column_List"/>
         FROM mmall_user
         WHERE username = #{username}
         and password = #{password}
@@ -169,16 +168,34 @@
         SELECT count(1) from mmall_user
         WHERE email = #{email}
     </select>
-    
+
     <select id="selectQuestionByUsername" resultType="String" parameterType="String">
         SELECT question from mmall_user
         WHERE username = #{username}
     </select>
-    
-    <select id="checkAnswer" resultType="int" parameterMap="map">
+
+    <select id="checkAnswer" resultType="int" parameterType="map">
         SELECT count(1) FROM mmall_user
         WHERE username = #{username}
         and question = #{question}
         and answer = #{answer}
+    </select>
+
+    <update id="updatePasswordByUsername" parameterType="map">
+        UPDATE mmall_user
+        SET password = #{passwordNew}, update_time = now()
+        where username = #{username}
+    </update>
+
+    <select id="checkPassword" resultType="int" parameterType="map">
+        SELECT count(1) FROM mmall_user WHERE id = #{userId}
+        and password = #{password}
+        and id = #{userId}
+    </select>
+
+    <select id="checkEmailByUserId" resultType="int" parameterType="map">
+        SELECT count(1) from mmall_user
+        WHERE email = #{email}
+        AND id != #{userId}
     </select>
 </mapper>
