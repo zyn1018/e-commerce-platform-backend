@@ -27,7 +27,7 @@ import java.util.List;
  * Created by yinan on 6/20/17.
  */
 @Service("iProductService")
-public class ProductServiceImpl implements IProductService{
+public class ProductServiceImpl implements IProductService {
 
     @Autowired
     private ProductMapper productMapper;

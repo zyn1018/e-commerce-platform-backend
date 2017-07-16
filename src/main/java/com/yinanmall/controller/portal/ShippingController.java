@@ -25,6 +25,13 @@ public class ShippingController {
     @Autowired
     private IShippingService iShippingService;
 
+    /**
+     * 增加收货地址
+     *
+     * @param session
+     * @param shipping
+     * @return
+     */
     @RequestMapping("add.do")
     @ResponseBody
     public ServerResponse add(HttpSession session, Shipping shipping) {
@@ -35,6 +42,13 @@ public class ShippingController {
         return iShippingService.add(user.getId(), shipping);
     }
 
+    /**
+     * 删除收货地址
+     *
+     * @param session
+     * @param shippingId
+     * @return
+     */
     @RequestMapping("del.do")
     @ResponseBody
     public ServerResponse del(HttpSession session, Integer shippingId) {
@@ -45,6 +59,13 @@ public class ShippingController {
         return iShippingService.del(user.getId(), shippingId);
     }
 
+    /**
+     * 更新现有收货地址
+     *
+     * @param session
+     * @param shipping
+     * @return
+     */
     @RequestMapping("update.do")
     @ResponseBody
     public ServerResponse update(HttpSession session, Shipping shipping) {
@@ -55,6 +76,13 @@ public class ShippingController {
         return iShippingService.update(user.getId(), shipping);
     }
 
+    /**
+     * 查询用户的收货地址
+     *
+     * @param session
+     * @param shippingId
+     * @return
+     */
     @RequestMapping("select.do")
     @ResponseBody
     public ServerResponse<Shipping> select(HttpSession session, Integer shippingId) {
@@ -65,6 +93,14 @@ public class ShippingController {
         return iShippingService.select(user.getId(), shippingId);
     }
 
+    /**
+     * 列出用户的所有收货地址
+     *
+     * @param pageNum
+     * @param pageSize
+     * @param session
+     * @return
+     */
     @RequestMapping("list.do")
     @ResponseBody
     public ServerResponse<PageInfo> list(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,

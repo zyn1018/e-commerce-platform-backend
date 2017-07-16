@@ -43,6 +43,7 @@ public class UserController {
 
     /**
      * 登出
+     *
      * @param session
      * @return
      */
@@ -55,6 +56,7 @@ public class UserController {
 
     /**
      * 注册
+     *
      * @param user
      * @return
      */
@@ -66,6 +68,7 @@ public class UserController {
 
     /**
      * 检查用户名或者email是否可用
+     *
      * @param str
      * @param type
      * @return
@@ -78,6 +81,7 @@ public class UserController {
 
     /**
      * 获取已登录用户的信息
+     *
      * @param session
      * @return
      */
@@ -93,6 +97,7 @@ public class UserController {
 
     /**
      * 根据用户名获取忘记密码问题
+     *
      * @param username
      * @return
      */
@@ -104,6 +109,7 @@ public class UserController {
 
     /**
      * 检查忘记密码问题的答案是否正确
+     *
      * @param username
      * @param question
      * @param answer
@@ -117,6 +123,7 @@ public class UserController {
 
     /**
      * 根据忘记密码问题重设密码
+     *
      * @param username
      * @param passwordNew
      * @param forgetToken
@@ -130,6 +137,7 @@ public class UserController {
 
     /**
      * 在用户登录情况下, 重新设置密码
+     *
      * @param session
      * @param passwordOld
      * @param passwordNew
@@ -148,6 +156,7 @@ public class UserController {
 
     /**
      * 更新已登录的用户的信息
+     *
      * @param session
      * @param user
      * @return
@@ -168,6 +177,12 @@ public class UserController {
         return response;
     }
 
+    /**
+     * 获取用户信息
+     *
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "get_information.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<User> get_information(HttpSession session) {
