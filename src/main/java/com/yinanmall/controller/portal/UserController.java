@@ -23,7 +23,7 @@ public class UserController {
     @Autowired
     private IUserService iUserService;
 
-    /**
+    /*
      * 用户登录
      *
      * @param username
@@ -41,7 +41,7 @@ public class UserController {
         return response;
     }
 
-    /**
+    /*
      * 登出
      *
      * @param session
@@ -54,7 +54,7 @@ public class UserController {
         return ServerResponse.createBySuccess();
     }
 
-    /**
+    /*
      * 注册
      *
      * @param user
@@ -66,7 +66,7 @@ public class UserController {
         return iUserService.register(user);
     }
 
-    /**
+    /*
      * 检查用户名或者email是否可用
      *
      * @param str
@@ -79,7 +79,7 @@ public class UserController {
         return iUserService.checkValid(str, type);
     }
 
-    /**
+    /*
      * 获取已登录用户的信息
      *
      * @param session
@@ -95,7 +95,7 @@ public class UserController {
         return ServerResponse.createByErrorMessage("用户未登陆, 无法获取当前用户的信息");
     }
 
-    /**
+    /*
      * 根据用户名获取忘记密码问题
      *
      * @param username
@@ -107,7 +107,7 @@ public class UserController {
         return iUserService.selectQuestion(username);
     }
 
-    /**
+    /*
      * 检查忘记密码问题的答案是否正确
      *
      * @param username
@@ -121,7 +121,7 @@ public class UserController {
         return iUserService.checkAnswer(username, question, answer);
     }
 
-    /**
+    /*
      * 根据忘记密码问题重设密码
      *
      * @param username
@@ -135,7 +135,7 @@ public class UserController {
         return iUserService.forgetResetPassword(username, passwordNew, forgetToken);
     }
 
-    /**
+    /*
      * 在用户登录情况下, 重新设置密码
      *
      * @param session
@@ -154,7 +154,7 @@ public class UserController {
         return iUserService.resetPassword(passwordOld, passwordNew, user);
     }
 
-    /**
+    /*
      * 更新已登录的用户的信息
      *
      * @param session
@@ -177,7 +177,7 @@ public class UserController {
         return response;
     }
 
-    /**
+    /*
      * 获取用户信息
      *
      * @param session

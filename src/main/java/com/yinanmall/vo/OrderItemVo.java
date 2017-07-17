@@ -1,7 +1,6 @@
 package com.yinanmall.vo;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 /**
  * Created by yinan on 2017/7/16.
@@ -22,7 +21,7 @@ public class OrderItemVo {
 
     private BigDecimal totalPrice;
 
-    private Date createTime;
+    private String createTime;
 
     public Long getOrderNo() {
         return orderNo;
@@ -80,11 +79,11 @@ public class OrderItemVo {
         this.totalPrice = totalPrice;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 }

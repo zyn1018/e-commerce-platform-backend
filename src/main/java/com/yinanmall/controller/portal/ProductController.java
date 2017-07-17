@@ -19,7 +19,7 @@ public class ProductController {
     @Autowired
     private IProductService iProductService;
 
-    /**
+    /*
      * 查询产品的详细信息
      *
      * @param productId
@@ -31,7 +31,7 @@ public class ProductController {
         return iProductService.getProductDetail(productId);
     }
 
-    /**
+    /*
      * 查询并列出符合条件的所有产品
      *
      * @param keyword

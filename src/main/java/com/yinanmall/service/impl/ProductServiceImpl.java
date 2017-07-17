@@ -107,9 +107,9 @@ public class ProductServiceImpl implements IProductService {
 
         Category category = categoryMapper.selectByPrimaryKey(product.getCategoryId());
         if (category == null) {
-            productDetailVo.setParemtCategoryId(0);
+            productDetailVo.setParentCategoryId(0);
         } else {
-            productDetailVo.setParemtCategoryId(category.getParentId());
+            productDetailVo.setParentCategoryId(category.getParentId());
         }
         productDetailVo.setCreateTime(DateTimeUtil.dateToStr(product.getCreateTime()));
         productDetailVo.setUpdateTime(DateTimeUtil.dateToStr(product.getUpdateTime()));

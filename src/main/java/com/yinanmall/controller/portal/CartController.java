@@ -24,7 +24,7 @@ public class CartController {
     @Autowired
     private ICartService iCartService;
 
-    /**
+    /*
      * 向购物车中添加商品
      *
      * @param session
@@ -43,7 +43,7 @@ public class CartController {
         return iCartService.add(user.getId(), productId, count);
     }
 
-    /**
+    /*
      * 更新购物车商品
      *
      * @param session
@@ -62,7 +62,7 @@ public class CartController {
         return iCartService.update(user.getId(), productId, count);
     }
 
-    /**
+    /*
      * 删除购物车中的商品
      *
      * @param session
@@ -80,7 +80,7 @@ public class CartController {
         return iCartService.deleteProduct(user.getId(), productIds);
     }
 
-    /**
+    /*
      * 列出某用户购物车中的所有商品
      *
      * @param session
@@ -97,7 +97,7 @@ public class CartController {
         return iCartService.list(user.getId());
     }
 
-    /**
+    /*
      * 全选购物车的商品
      *
      * @param session
@@ -114,7 +114,7 @@ public class CartController {
         return iCartService.selectOrUnSelect(user.getId(), null, Const.Cart.CHECKED);
     }
 
-    /**
+    /*
      * 全反选购物车中的商品
      *
      * @param session
@@ -131,7 +131,7 @@ public class CartController {
         return iCartService.selectOrUnSelect(user.getId(), null, Const.Cart.UN_CHECKED);
     }
 
-    /**
+    /*
      * 单独选中购物车中的某件商品
      *
      * @param session
@@ -149,7 +149,7 @@ public class CartController {
         return iCartService.selectOrUnSelect(user.getId(), productId, Const.Cart.CHECKED);
     }
 
-    /**
+    /*
      * 单独反选购物车中的某件商品
      *
      * @param session
@@ -167,7 +167,7 @@ public class CartController {
         return iCartService.selectOrUnSelect(user.getId(), productId, Const.Cart.UN_CHECKED);
     }
 
-    /**
+    /*
      * 查询当前用户的购物车里面的产品数量，如果一个产品有10个，那么数量就是10个
      *
      * @param session

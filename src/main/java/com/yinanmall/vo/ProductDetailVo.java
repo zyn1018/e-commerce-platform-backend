@@ -20,7 +20,7 @@ public class ProductDetailVo {
     private String updateTime;
 
     private String imageHost;
-    private Integer paremtCategoryId;
+    private Integer parentCategoryId;
 
     public Integer getId() {
         return id;
@@ -126,11 +126,11 @@ public class ProductDetailVo {
         this.imageHost = imageHost;
     }
 
-    public Integer getParemtCategoryId() {
-        return paremtCategoryId;
+    public Integer getParentCategoryId() {
+        return parentCategoryId;
     }
 
-    public void setParemtCategoryId(Integer paremtCategoryId) {
-        this.paremtCategoryId = paremtCategoryId;
+    public void setParentCategoryId(Integer parentCategoryId) {
+        this.parentCategoryId = parentCategoryId;
     }
 }

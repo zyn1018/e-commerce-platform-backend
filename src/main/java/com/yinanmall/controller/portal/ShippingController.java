@@ -25,7 +25,7 @@ public class ShippingController {
     @Autowired
     private IShippingService iShippingService;
 
-    /**
+    /*
      * 增加收货地址
      *
      * @param session
@@ -42,7 +42,7 @@ public class ShippingController {
         return iShippingService.add(user.getId(), shipping);
     }
 
-    /**
+    /*
      * 删除收货地址
      *
      * @param session
@@ -59,7 +59,7 @@ public class ShippingController {
         return iShippingService.del(user.getId(), shippingId);
     }
 
-    /**
+    /*
      * 更新现有收货地址
      *
      * @param session
@@ -76,7 +76,7 @@ public class ShippingController {
         return iShippingService.update(user.getId(), shipping);
     }
 
-    /**
+    /*
      * 查询用户的收货地址
      *
      * @param session
@@ -93,7 +93,7 @@ public class ShippingController {
         return iShippingService.select(user.getId(), shippingId);
     }
 
-    /**
+    /*
      * 列出用户的所有收货地址
      *
      * @param pageNum
