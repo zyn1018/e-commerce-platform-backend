@@ -135,6 +135,12 @@ public class OrderController {
         return iOrderService.createOrder(user.getId(), shippingId);
     }
 
+    /**
+     * 取消订单
+     * @param session
+     * @param orderNo
+     * @return
+     */
     @RequestMapping("cancel.do")
     @ResponseBody
     public ServerResponse cancel(HttpSession session, Long orderNo) {
@@ -145,6 +151,11 @@ public class OrderController {
         return iOrderService.cancel(user.getId(), orderNo);
     }
 
+    /**
+     *  获取要被加入订单的商品
+     * @param session
+     * @return
+     */
     @RequestMapping("get_order_cart_product.do")
     @ResponseBody
     public ServerResponse getOrderCartProduct(HttpSession session) {
@@ -155,6 +166,12 @@ public class OrderController {
         return iOrderService.getOrderCartProduct(user.getId());
     }
 
+    /**
+     * 获得订单细节
+     * @param session
+     * @param orderNo
+     * @return
+     */
     @RequestMapping("detail.do")
     @ResponseBody
     public ServerResponse detail(HttpSession session, Long orderNo) {
@@ -165,6 +182,13 @@ public class OrderController {
         return iOrderService.getOrderDetail(user.getId(), orderNo);
     }
 
+    /**
+     * 列出一个用户的订单列表
+     * @param session
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @RequestMapping("list.do")
     @ResponseBody
     public ServerResponse list(HttpSession session, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
