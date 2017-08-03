@@ -125,7 +125,7 @@ public class OrderServiceImpl implements IOrderService {
         orderVo.setPaymentTypeDesc(Const.PaymentTypeEnum.codeOf(order.getPaymentType()).getValue());
         orderVo.setPostage(order.getPostage());
         orderVo.setStatus(order.getStatus());
-        orderVo.setStatusTypeDesc(Const.OrderStatus.codeOf(order.getStatus()).getValue());
+        orderVo.setStatusTypeDesc(Const.OrderStatusEnum.codeOf(order.getStatus()).getValue());
         orderVo.setShippingId(order.getShippingId());
         Shipping shipping = shippingMapper.selectByPrimaryKey(order.getShippingId());
         if (shipping != null) {
@@ -199,7 +199,7 @@ public class OrderServiceImpl implements IOrderService {
         Order order = new Order();
         long orderNo = this.generateOrderNo();
         order.setOrderNo(orderNo);
-        order.setStatus(Const.OrderStatus.NO_PAY.getCode());
+        order.setStatus(Const.OrderStatusEnum.NO_PAY.getCode());
         order.setPostage(0);
         order.setPaymentType(Const.PaymentTypeEnum.ONLINE_PAY.getCode());
         order.setPayment(payment);
@@ -265,13 +265,13 @@ public class OrderServiceImpl implements IOrderService {
             return ServerResponse.createByErrorMessage("该用户没有此订单或者订单不存在");
         }
 
-        if (order.getStatus() != Const.OrderStatus.NO_PAY.getCode()) {
+        if (order.getStatus() != Const.OrderStatusEnum.NO_PAY.getCode()) {
             return ServerResponse.createByErrorMessage("已付款，无法取消订单");
         }
 
         Order updateOrder = new Order();
         updateOrder.setId(order.getId());
-        updateOrder.setStatus(Const.OrderStatus.CANCELED.getCode());
+        updateOrder.setStatus(Const.OrderStatusEnum.CANCELED.getCode());
 
         int row = orderMapper.updateByPrimaryKeySelective(updateOrder);
         if (row > 0) {
@@ -456,12 +456,12 @@ public class OrderServiceImpl implements IOrderService {
         if (order == null) {
             return ServerResponse.createByErrorMessage("非商城的订, 回调忽略");
         }
-        if (order.getStatus() >= Const.OrderStatus.PAID.getCode()) {
+        if (order.getStatus() >= Const.OrderStatusEnum.PAID.getCode()) {
             return ServerResponse.createBySuccess("支付宝重复调用");
         }
         if (Const.AlipayCallback.TRADE_SUCCESS_TRADE_SUCCESS.equals(tradeStatus)) {
             order.setPaymentTime(DateTimeUtil.strToDate(params.get("gmt_payment")));
-            order.setStatus(Const.OrderStatus.PAID.getCode());
+            order.setStatus(Const.OrderStatusEnum.PAID.getCode());
             orderMapper.updateByPrimaryKeySelective(order);
         }
 
@@ -483,7 +483,7 @@ public class OrderServiceImpl implements IOrderService {
         if (order == null) {
             return ServerResponse.createByErrorMessage("该用户没有相应订单");
         }
-        if (order.getStatus() >= Const.OrderStatus.PAID.getCode()) {
+        if (order.getStatus() >= Const.OrderStatusEnum.PAID.getCode()) {
             return ServerResponse.createBySuccess();
         }
 
@@ -564,8 +564,8 @@ public class OrderServiceImpl implements IOrderService {
     public ServerResponse<String> manageSendGoods(Long orderNo) {
         Order order = orderMapper.selectByOrderNo(orderNo);
         if (order != null) {
-            if(order.getStatus() == Const.OrderStatus.PAID.getCode()) {
-                order.setStatus(Const.OrderStatus.SHIPPED.getCode());
+            if(order.getStatus() == Const.OrderStatusEnum.PAID.getCode()) {
+                order.setStatus(Const.OrderStatusEnum.SHIPPED.getCode());
                 order.setSendTime(new Date());
                 orderMapper.updateByPrimaryKeySelective(order);
                 return ServerResponse.createBySuccess("发货成功");

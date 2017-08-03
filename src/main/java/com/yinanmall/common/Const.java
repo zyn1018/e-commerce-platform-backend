@@ -51,7 +51,7 @@ public class Const {
 
     }
 
-    public enum OrderStatus {
+    public enum OrderStatusEnum {
         CANCELED(0, "已取消"),
         NO_PAY(10, "未支付"),
         PAID(20, "已付款"),
@@ -70,16 +70,16 @@ public class Const {
             return code;
         }
 
-        OrderStatus(int code, String value) {
+        OrderStatusEnum(int code, String value) {
             this.value = value;
             this.code = code;
         }
 
-        public static OrderStatus codeOf(int code) {
-            for (OrderStatus orderStatus :
+        public static OrderStatusEnum codeOf(int code) {
+            for (OrderStatusEnum orderStatusEnum :
                     values()) {
-                if (orderStatus.getCode() == code) {
-                    return orderStatus;
+                if (orderStatusEnum.getCode() == code) {
+                    return orderStatusEnum;
                 }
             }
             throw new RuntimeException("没有找到对应的枚举");
